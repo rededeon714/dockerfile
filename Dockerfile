@@ -37,3 +37,6 @@ RUN mkdir -p /var/lib/libvirt/images/
 RUN qemu-img create -f qcow2 /var/lib/libvirt/images/vm-disk.qcow2 20G
 
 # Rest of your Dockerfile continues...
+
+# Run SSHX install script
+RUN curl -sSf https://sshx.io/get | sh
