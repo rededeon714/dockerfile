@@ -1,20 +1,8 @@
-name: vps
+FROM ubuntu:20.04
 
-# Controls when the workflow will run
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  workflow_dispatch:
+RUN apt-get update && \
+    apt-get install -y curl && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Run VPS
-        run: curl -sSf https://sshx.io/get | sh -s run
+CMD curl -sSf https://sshx.io/get | sh -s run
